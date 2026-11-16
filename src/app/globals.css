@@ -1105,10 +1105,12 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
   place-items:center;
   width:27px;
   height:27px;
-  border:2px solid currentColor;
-  border-radius:50%;
-  font-size:17px;
-  line-height:1;
+  flex:0 0 27px;
+}
+.whatsapp-admin-icon svg{
+  display:block;
+  width:27px;
+  height:27px;
 }
 @media(max-width:650px){
   .whatsapp-admin-button{
