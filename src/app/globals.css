@@ -823,3 +823,54 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
  .admin-school{align-items:flex-start;flex-direction:column}
  .admin-school .admin-actions{max-width:none;width:100%}
 }
+
+
+/* Contrast fixes for admin cards and readable floating school-news feedback */
+.dashboard-page .admin-metrics article,
+.dashboard-page .admin-school,
+.dashboard-page .admin-school-main{
+  color:#18352d !important;
+}
+.dashboard-page .admin-metrics article span,
+.dashboard-page .admin-metrics article small,
+.dashboard-page .admin-school p,
+.dashboard-page .admin-school small{
+  color:#52645a !important;
+}
+.dashboard-page .admin-metrics article strong,
+.dashboard-page .admin-school h3{
+  color:#18352d !important;
+}
+.dashboard-page .admin-school .school-type{color:#8b632d !important}
+.dashboard-page .admin-school .admin-status.status-pending{background:#fff0c9!important;color:#79510a!important}
+.dashboard-page .admin-school .admin-status.status-verified{background:#dff3e5!important;color:#17683a!important}
+.dashboard-page .admin-school .admin-status.status-rejected{background:#fbe5e2!important;color:#96382f!important}
+.dashboard-page .admin-school .admin-status.status-suspended{background:#eae5f7!important;color:#57418a!important}
+.news-feedback{
+  position:fixed !important;
+  right:max(18px,env(safe-area-inset-right));
+  bottom:max(18px,env(safe-area-inset-bottom));
+  z-index:9999;
+  width:min(440px,calc(100vw - 32px));
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  padding:15px 17px !important;
+  border-radius:14px !important;
+  box-shadow:0 14px 40px rgba(0,0,0,.22) !important;
+  font-size:13px !important;
+  line-height:1.55 !important;
+  animation:news-feedback-in .2s ease-out;
+}
+.news-feedback.alert-success{background:#e7f7ec!important;color:#145b32!important;border:1px solid #9bd5ad!important}
+.news-feedback.alert-error{background:#fff0ed!important;color:#8e2e24!important;border:1px solid #edb7ad!important}
+.news-feedback-close{
+  flex:0 0 auto;
+  border:0;background:transparent;color:inherit;
+  font-size:22px;line-height:1;cursor:pointer;padding:0 2px;
+}
+@keyframes news-feedback-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){
+ .news-feedback{right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:calc(100vw - 24px)}
+}
