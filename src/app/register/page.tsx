@@ -13,7 +13,7 @@ export default function RegisterPage() {
     e.preventDefault(); setBusy(true); setError(""); setNotice("");
     try {
       const supabase = createClient();
-      const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: name }, emailRedirectTo: `${window.location.origin}/auth/callback` } });
+      const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: name }, emailRedirectTo: "https://tanga-schools-hub.vercel.app/auth/callback" } });
       if (error) throw error;
       if (data.session) { router.push("/dashboard"); router.refresh(); }
       else setNotice("Account created. Check your email to confirm the address, then sign in to submit your school profile for verification.");
