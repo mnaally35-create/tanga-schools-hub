@@ -126,3 +126,55 @@ body{
 @media(max-width:650px){
   .search-section::before,.section::before,.district-section::before,.news-section::before{background:rgba(248,250,247,.96)}
 }
+
+/* Final visual direction: solid warm olive background, no campus photography */
+html,body{
+  background:#48523b !important;
+  background-image:none !important;
+  background-attachment:initial !important;
+}
+body{color:#f7f3e9}
+.dashboard-page,.profile-page,.auth-page,
+.search-section,.section,.district-section,.news-section,
+.hero,.hero-section,.page-section{
+  background:transparent !important;
+  background-image:none !important;
+}
+.search-section::before,.section::before,
+.district-section::before,.news-section::before{
+  background:transparent !important;
+}
+.section-heading h1,.section-heading h2,.section-heading h3,
+.dashboard-top h1,.dashboard-top p,
+.dashboard-page h1,.dashboard-page h2,
+.profile-page h1,.profile-page h2,
+.hero h1,.hero h2,.hero p,
+.search-section h1,.search-section h2,
+.section > .container > h2,.section > .container > p{
+  color:#fff8e9 !important;
+  text-shadow:0 1px 3px rgba(0,0,0,.22) !important;
+}
+.search-card,.school-card,.district-callout,.news-card,
+.join-inner,.hero-panel,.dashboard-section,.form-panel,
+.profile-card,.auth-card,.admin-metrics article,
+.admin-school,.empty-state{
+  background:#f5f0e4 !important;
+  color:#273326 !important;
+  border-color:rgba(39,51,38,.13) !important;
+  box-shadow:0 12px 30px rgba(20,27,17,.16) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+.search-card h1,.search-card h2,.search-card h3,
+.school-card h1,.school-card h2,.school-card h3,
+.school-card p,.search-card p,
+.dashboard-section h1,.dashboard-section h2,.dashboard-section h3,
+.dashboard-section p,.form-panel h1,.form-panel h2,.form-panel p,
+.profile-card h1,.profile-card h2,.profile-card p,
+.admin-school h3,.admin-school p,.empty-state h3,.empty-state p{
+  color:#273326 !important;
+  text-shadow:none !important;
+}
+@media(max-width:650px){
+  html,body{background-attachment:scroll !important}
+}
