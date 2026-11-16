@@ -923,3 +923,48 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
 .dashboard-page .admin-tab.active span{background:#07516f !important;color:#fff !important}
 .dashboard-page .reject-reason-box label{color:#eef4f8 !important}
 .dashboard-page .reject-reason-box textarea{color:#f4f8fb !important;background:#202f3e !important}
+
+
+/* Admin console correction: keep dark cards and use light, readable text */
+.dashboard-page .admin-metrics article,
+.dashboard-page .admin-school{
+  background:#1b2937 !important;
+  color:#eef4f8 !important;
+  border:1px solid #456176 !important;
+}
+.dashboard-page .admin-metrics article span,
+.dashboard-page .admin-metrics article small,
+.dashboard-page .admin-school-main,
+.dashboard-page .admin-school h3,
+.dashboard-page .admin-school p,
+.dashboard-page .admin-school small{
+  color:#eaf2f7 !important;
+  text-shadow:none !important;
+}
+.dashboard-page .admin-metrics article strong{color:#ffffff !important}
+.dashboard-page .admin-school .school-type{color:#e8c68d !important}
+.dashboard-page .admin-school .admin-status{
+  background:#294355 !important;
+  color:#f2f7fa !important;
+}
+.dashboard-page .admin-school .admin-status.status-pending{background:#59451f!important;color:#ffe6a6!important}
+.dashboard-page .admin-school .admin-status.status-verified{background:#174b38!important;color:#c9f3d8!important}
+.dashboard-page .admin-school .admin-status.status-rejected{background:#5b302f!important;color:#ffd9d5!important}
+.dashboard-page .admin-school .admin-status.status-suspended{background:#44365f!important;color:#e8dcff!important}
+.dashboard-page .admin-school .admin-rejection-note{color:#ffb9ae !important}
+.dashboard-page .admin-search input,
+.dashboard-page .admin-toolbar .admin-search input{
+  background:#202f3e !important;
+  color:#f4f8fb !important;
+  border:1px solid #527187 !important;
+  caret-color:#ffffff !important;
+}
+.dashboard-page .admin-search input::placeholder{color:#b7c7d2 !important;opacity:1}
+.dashboard-page .admin-tab{
+  background:#202f3e !important;
+  color:#eaf4f9 !important;
+  border:1px solid #456176 !important;
+}
+.dashboard-page .admin-tab span{background:#365064 !important;color:#f4f8fb !important}
+.dashboard-page .admin-tab.active{background:#087ba8 !important;color:#fff !important;border-color:#36b9e3 !important}
+.dashboard-page .admin-tab.active span{background:#07516f !important;color:#fff !important}
