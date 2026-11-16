@@ -755,3 +755,24 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto !important;animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
 }
+
+/* School news management workspace */
+.news-school-select{display:flex;flex-direction:column;gap:8px;max-width:460px;margin:0 0 18px;font-size:12px;font-weight:800}
+.news-school-select select{border:1px solid #dfe6df;border-radius:10px;padding:13px;background:#fff;color:var(--ink)}
+.news-verification-note{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:16px 18px;margin-bottom:18px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.92);font-size:13px}
+.news-verification-note p{flex-basis:100%;margin:0;color:var(--muted);font-size:12px;line-height:1.6}
+.news-publish-toggle{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700}
+.news-publish-toggle input{width:18px;height:18px;accent-color:var(--forest)}
+.school-news-manage-list{display:grid;gap:12px}
+.school-news-manage-item{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:20px;background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:15px}
+.school-news-manage-copy{min-width:0}
+.school-news-manage-copy h3{margin:8px 0;font-size:16px}
+.school-news-manage-copy p{margin:0 0 8px;color:var(--muted);font-size:12px;line-height:1.65}
+.school-news-manage-copy small{color:#89938d;font-size:10px}
+.school-news-manage-actions{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+.school-news-manage-actions .button{padding:10px 15px;font-size:11px}
+@media(max-width:700px){
+ .school-news-manage-item{align-items:flex-start;flex-direction:column}
+ .school-news-manage-actions{width:100%}
+ .school-news-manage-actions .button{flex:1}
+}
