@@ -996,3 +996,74 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
 .news-article .text-link{
   color:#087ba8 !important;
 }
+
+
+/* Editorial typography refinement — public news article only */
+.news-article{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif !important;
+  padding:clamp(30px,5.5vw,64px) !important;
+}
+.news-article > .eyebrow{
+  display:inline-block;
+  font-size:11px !important;
+  font-weight:850 !important;
+  letter-spacing:3px !important;
+  line-height:1.4;
+  margin-bottom:18px;
+}
+.news-article h1{
+  max-width:760px;
+  margin:12px 0 25px !important;
+  font-family:Georgia,"Times New Roman",serif !important;
+  font-size:clamp(42px,6vw,68px) !important;
+  font-weight:700 !important;
+  line-height:1.04 !important;
+  letter-spacing:-2.2px !important;
+  text-wrap:balance;
+}
+.news-article .news-article-meta{
+  align-items:center;
+  gap:10px 22px;
+  padding:16px 0 20px !important;
+  font-size:13px !important;
+  font-weight:650 !important;
+}
+.news-article .news-article-meta span{
+  font-weight:800;
+  letter-spacing:.25px;
+}
+.news-article .news-article-meta time{
+  font-variant-numeric:tabular-nums;
+}
+.news-article .news-article-excerpt{
+  max-width:740px;
+  margin:26px 0 22px !important;
+  font-size:clamp(18px,2.1vw,22px) !important;
+  font-weight:650 !important;
+  line-height:1.65 !important;
+  letter-spacing:-.25px;
+}
+.news-article .news-article-content{
+  max-width:740px;
+  font-size:16px !important;
+  line-height:1.95 !important;
+  letter-spacing:.08px;
+}
+.news-article .news-article-content p{
+  margin:0 0 20px !important;
+}
+.news-article > .text-link{
+  display:inline-flex;
+  margin-top:18px;
+  padding:11px 0;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.1px;
+}
+@media(max-width:650px){
+  .news-article{padding:26px 22px !important}
+  .news-article > .eyebrow{font-size:9px !important;letter-spacing:2.2px !important}
+  .news-article h1{font-size:clamp(36px,10vw,48px) !important;letter-spacing:-1.3px !important}
+  .news-article .news-article-meta{font-size:11px !important}
+  .news-article .news-article-content{font-size:15px !important;line-height:1.85 !important}
+}
