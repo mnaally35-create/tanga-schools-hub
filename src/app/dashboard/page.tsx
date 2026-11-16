@@ -15,19 +15,22 @@ export default function DashboardPage() {
   const [schoolName,setSchoolName] = useState(""); const [schoolType,setSchoolType] = useState("government"); const [registrationNumber,setRegistrationNumber] = useState(""); const [districtId,setDistrictId] = useState(""); const [ward,setWard] = useState(""); const [address,setAddress] = useState(""); const [phone,setPhone] = useState(""); const [schoolEmail,setSchoolEmail] = useState("");
   useEffect(() => { let active = true; const supabase = createClient();
     async function load() { const { data: { user } } = await supabase.auth.getUser(); if (!user) { router.replace("/login"); return; } if (!active) return; setEmail(user.email ?? "");
-      const [{ data, error }, { data: districtRows, error: districtError }] = await Promise.all([
+      const [{ data, error }, { data: districtRows, error: districtError }, { data: platformRole, error: platformRoleError }] = await Promise.all([
         supabase.from("school_memberships").select("id,role,schools(id,name,slug,status,school_type)").eq("user_id", user.id).eq("is_active", true),
-        supabase.from("districts").select("id,name").eq("region","Tanga").eq("is_active",true).order("name")
+        supabase.from("districts").select("id,name").eq("region","Tanga").eq("is_active",true).order("name"),
+        supabase.from("platform_memberships").select("role").eq("user_id", user.id).eq("role", "super_admin").maybeSingle()
       ]);
       if (!active) return; if (error) setError(error.message); else setMemberships((data ?? []) as unknown as Membership[]);
       if (districtError) setError(districtError.message); else setDistricts(districtRows ?? []);
+      if (platformRoleError) setError(platformRoleError.message); else setIsPlatformAdmin(!!platformRole);
       setLoading(false);
     } load(); return () => { active = false; };
   },[router]);
   async function loadWards(nextDistrictId: string) { setDistrictId(nextDistrictId); setWard(""); setWards([]); if (!nextDistrictId) return; const { data, error } = await createClient().from("wards").select("id,name").eq("district_id", nextDistrictId).order("name"); if (error) setError(error.message); else setWards(data ?? []); }
   async function submitSchool(e: FormEvent) { e.preventDefault(); setBusy(true); setError(""); setSuccess("");
     try { const supabase = createClient(); const { data: { user } } = await supabase.auth.getUser(); if (!user) throw new Error("Please sign in again.");
-      const { data: adminRole } = await supabase.from("platform_memberships").select("role").eq("user_id", user.id).eq("role", "super_admin").maybeSingle();\n      if (adminRole) throw new Error("Akaunti ya Admin Mkuu haiwezi kusajili shule au kupewa nafasi ya School Admin. Tumia akaunti tofauti ya shule.");\n      const slug = slugify(schoolName); if (!slug) throw new Error("Enter a valid school name.");
+      const { data: adminRole } = await supabase.from("platform_memberships").select("role").eq("user_id", user.id).eq("role", "super_admin").maybeSingle();
+      if (adminRole) throw new Error("Akaunti ya Admin Mkuu haiwezi kusajili shule au kupewa nafasi ya School Admin. Tumia akaunti tofauti ya shule.");\n      const slug = slugify(schoolName); if (!slug) throw new Error("Enter a valid school name.");
       const selectedDistrict = districts.find((item) => item.id === districtId); if (!selectedDistrict) throw new Error("Please select a district.");
       const { data: school, error } = await supabase.from("schools").insert({ name: schoolName.trim(), slug, school_type: schoolType, registration_number: registrationNumber.trim() || null, district_id: districtId, ward: ward.trim() || null, address: [selectedDistrict.name, address.trim()].filter(Boolean).join(", ") || null, phone: phone.trim() || null, email: schoolEmail.trim() || null, created_by: user.id, status: "pending" }).select("id").single();
       if (error) throw error;
