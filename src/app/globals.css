@@ -425,3 +425,144 @@ textarea,.auth-card input{
   }
   .dashboard-school .status{justify-self:start}
 }
+
+/* PUBLIC WEBSITE — unified teal/navy palette with accessible text contrast */
+body:has(.hero){
+  background:linear-gradient(155deg,#08749a 0%,#07516f 18%,#12364e 34%,#172431 48%,#172431 100%) !important;
+  background-attachment:fixed !important;
+  color:#eef4f8 !important;
+}
+body:has(.hero) .site-header{
+  background:#102a3b !important;
+  border-bottom:1px solid #315064 !important;
+  color:#f3f8fb !important;
+  backdrop-filter:none !important;
+}
+body:has(.hero) .site-header .brand,
+body:has(.hero) .site-header .main-nav,
+body:has(.hero) .site-header .main-nav a{color:#eef5f9 !important}
+body:has(.hero) .site-header .brand small{color:#9fc5d7 !important}
+body:has(.hero) main,
+body:has(.hero) .search-section,
+body:has(.hero) .section,
+body:has(.hero) .district-section{
+  background:transparent !important;
+  color:#eef4f8 !important;
+}
+body:has(.hero) .hero{
+  background:radial-gradient(ellipse at 72% 52%,#126b80 0%,transparent 46%),linear-gradient(115deg,#0c3448,#0b536b 68%,#12384e) !important;
+}
+body:has(.hero) .hero h1,
+body:has(.hero) .hero-copy>p,
+body:has(.hero) .hero-note,
+body:has(.hero) .eyebrow-light{color:#f1f7fa !important}
+body:has(.hero) .hero h1 em{color:#63d2ef !important}
+body:has(.hero) .hero-panel,
+body:has(.hero) .search-card,
+body:has(.hero) .school-card,
+body:has(.hero) .district-callout,
+body:has(.hero) .news-card,
+body:has(.hero) .news-placeholder,
+body:has(.hero) .empty-state,
+body:has(.hero) .feature-tile{
+  background:#1b2937 !important;
+  color:#eef4f8 !important;
+  border:1px solid #38566b !important;
+  border-radius:22px !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.2) !important;
+}
+body:has(.hero) .hero-panel h2,
+body:has(.hero) .hero-panel h3,
+body:has(.hero) .hero-panel strong,
+body:has(.hero) .search-card h2,
+body:has(.hero) .section-heading h2,
+body:has(.hero) .school-card h3,
+body:has(.hero) .district-callout h3,
+body:has(.hero) .news-card h3,
+body:has(.hero) .news-placeholder h3,
+body:has(.hero) .empty-state h3,
+body:has(.hero) .feature-tile strong{
+  color:#f3f8fb !important;
+  text-shadow:none !important;
+}
+body:has(.hero) .hero-panel>p,
+body:has(.hero) .search-card p,
+body:has(.hero) .section-heading p,
+body:has(.hero) .school-card p,
+body:has(.hero) .district-callout p,
+body:has(.hero) .news-card p,
+body:has(.hero) .news-placeholder p,
+body:has(.hero) .empty-state p,
+body:has(.hero) .feature-tile small{
+  color:#b9cbd7 !important;
+}
+body:has(.hero) .panel-kicker,
+body:has(.hero) .school-type,
+body:has(.hero) .news-symbol,
+body:has(.hero) .feature-tile span{color:#66cdec !important}
+body:has(.hero) .school-card-link,
+body:has(.hero) .text-link,
+body:has(.hero) .district-callout .text-link{color:#65d3f2 !important}
+body:has(.hero) .school-card-icon,
+body:has(.hero) .district-map-mark,
+body:has(.hero) .news-mini-grid span{
+  background:#243d50 !important;
+  color:#75d4ef !important;
+}
+body:has(.hero) .count-pill{
+  background:#203b4d !important;
+  color:#bfeafa !important;
+  border:1px solid #3d6177 !important;
+}
+body:has(.hero) .search-controls input,
+body:has(.hero) .search-controls select{
+  background:#202f3e !important;
+  color:#f0f6fa !important;
+  border:1px solid #456176 !important;
+  border-radius:14px !important;
+}
+body:has(.hero) .search-controls input::placeholder{color:#aabac6 !important}
+body:has(.hero) .search-controls select option{background:#1b2937;color:#eef4f8}
+body:has(.hero) .search-controls input:focus,
+body:has(.hero) .search-controls select:focus{
+  border-color:#54c7e9 !important;
+  box-shadow:0 0 0 3px rgba(84,199,233,.17) !important;
+}
+body:has(.hero) .button-dark{
+  background:linear-gradient(100deg,#20b5e5,#0879a8) !important;
+  color:#fff !important;
+}
+body:has(.hero) .button-gold{
+  background:linear-gradient(100deg,#20b5e5,#0879a8) !important;
+  color:#fff !important;
+}
+body:has(.hero) .button-outline{
+  border:1px solid #70b4ce !important;
+  color:#f3f8fb !important;
+  background:rgba(19,49,67,.55) !important;
+}
+body:has(.hero) .join-banner{
+  background:#102a3b !important;
+  color:#f3f8fb !important;
+  border-top:1px solid #315064 !important;
+  border-bottom:1px solid #315064 !important;
+}
+body:has(.hero) .join-inner p{color:#b9cbd7 !important}
+body:has(.hero) .footer{
+  background:#0d1d2a !important;
+  color:#eef4f8 !important;
+}
+body:has(.hero) .footer-inner>div:first-child>p,
+body:has(.hero) .footer-side span,
+body:has(.hero) .footer-bottom{color:#aebfca !important}
+body:has(.hero) .footer-side a{color:#65d3f2 !important}
+body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
+@media(max-width:650px){
+  body:has(.hero){background-attachment:scroll !important}
+  body:has(.hero) .search-card,
+  body:has(.hero) .school-card,
+  body:has(.hero) .district-callout,
+  body:has(.hero) .news-card,
+  body:has(.hero) .news-placeholder,
+  body:has(.hero) .empty-state{border-radius:19px !important}
+}
