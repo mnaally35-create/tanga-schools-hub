@@ -40,5 +40,5 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en-TZ"><body><a className="skip-link" href="#main-content">Skip to main content</a><PwaRegister />{children}</body></html>;
+  return <html lang="en-TZ"><body><a className="skip-link" href="#main-content">Skip to main content</a><PwaRegister />{children}<a className="whatsapp-admin-button" href="https://wa.me/255710082844?text=Habari%20Admin%20Mkuu%20wa%20Tanga%20Schools%20Hub%2C%20naomba%20msaada." target="_blank" rel="noopener noreferrer" aria-label="Chat with the chief administrator on WhatsApp"><span className="whatsapp-admin-icon" aria-hidden="true">◉</span><span>Chat with Admin</span></a></body></html>;
 }
