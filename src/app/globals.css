@@ -263,3 +263,74 @@ textarea,.auth-card input{
 .alert-success{background:#173f3c;color:#c8f4e7;border-color:#2c7165}
 .dashboard-top .eyebrow,.eyebrow{color:#8ecde5}
 @media(max-width:650px){html,body{background-attachment:scroll !important}}
+
+/* Consistent rounded portal surfaces and readable text on dark theme */
+.dashboard-section,.form-panel,.profile-card,.auth-card,
+.admin-metrics article,.admin-school,.empty-state,
+.dashboard-school,.dashboard-school-list,.admin-list,
+.reject-reason-box,.dashboard-help,.admin-restriction{
+  background:#1b2937 !important;
+  color:#eef4f8 !important;
+  border:1px solid #365064 !important;
+  border-radius:26px !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.2) !important;
+  overflow:hidden;
+}
+.dashboard-school{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:22px 24px !important;
+  margin:12px 0;
+}
+.dashboard-school h3,.dashboard-school p,
+.dashboard-school strong,.dashboard-section p,
+.form-panel p,.admin-school p,.admin-school h3,
+.empty-state h3,.empty-state p,.dashboard-help,
+.dashboard-help p,.admin-metrics span,.admin-metrics small{
+  color:#eaf2f7 !important;
+}
+.dashboard-school .status{border-radius:999px !important}
+.dashboard-section,.form-panel,.profile-card,.auth-card,
+.admin-school,.empty-state,.dashboard-help{
+  padding:26px !important;
+}
+.dashboard-section .section-heading h2,
+.form-panel .section-heading h2,
+.dashboard-top h1,.dashboard-top p,
+.admin-school h3,.profile-card h1{
+  color:#f1f6fa !important;
+}
+.form-grid input,.form-grid select,.form-grid textarea,
+.reject-reason-box textarea{
+  border-radius:16px !important;
+  background:#202f3e !important;
+  color:#f1f6fa !important;
+  border:1px solid #3b596d !important;
+}
+.form-grid input::placeholder,.form-grid textarea::placeholder{color:#aabac6 !important}
+.reject-reason-box{
+  padding:18px;
+  margin-top:16px;
+  width:100%;
+}
+.reject-reason-box label{display:grid;gap:10px;color:#edf4f8}
+.reject-reason-box textarea{width:100%;padding:14px;resize:vertical}
+.rejection-reason{
+  background:#293c4b;
+  border:1px solid #527084;
+  color:#f4f7fa !important;
+  padding:16px 18px;
+  border-radius:18px;
+}
+.dashboard-school,.admin-school,.admin-metrics article,
+.search-card,.school-card,.district-callout,.news-card,
+.join-inner,.hero-panel,.dashboard-section,.form-panel,
+.profile-card,.auth-card,.empty-state{
+  border-radius:26px !important;
+}
+@media(max-width:650px){
+  .dashboard-section,.form-panel,.profile-card,.auth-card,
+  .admin-school,.empty-state,.dashboard-help{padding:18px !important;border-radius:22px !important}
+  .dashboard-school{flex-wrap:wrap;padding:18px !important;border-radius:22px !important}
+}
