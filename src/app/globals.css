@@ -663,3 +663,56 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
  .public-site .news-card,.public-site .news-placeholder,.public-site .empty-state,
  .public-site .hero-panel{border-radius:19px !important}
 }
+
+/* Clean public page: remove decorative divider lines and section outlines */
+.public-site .site-header,
+.public-site .hero,
+.public-site .search-section,
+.public-site .section,
+.public-site .district-section,
+.public-site .join-banner,
+.public-site .footer,
+.public-site .footer-bottom{
+  border:0 !important;
+  border-top:0 !important;
+  border-bottom:0 !important;
+  outline:0 !important;
+  box-shadow:none !important;
+}
+.public-site .hero::before,
+.public-site .hero::after,
+.public-site .join-banner::before,
+.public-site .join-banner::after,
+.public-site .footer::before,
+.public-site .footer::after{
+  content:none !important;
+  display:none !important;
+}
+.public-site .hero{
+  background:linear-gradient(145deg,#075b78 0%,#123b53 45%,#172431 100%) !important;
+}
+.public-site .join-banner{
+  background:#102a3b !important;
+  border-radius:0 !important;
+}
+.public-site .footer{
+  background:#0b1c29 !important;
+}
+.public-site .footer-bottom{
+  background:#0b1c29 !important;
+  border:0 !important;
+}
+.public-site .site-header{
+  background:#102a3b !important;
+}
+.public-site .hero-grid,
+.public-site .join-inner,
+.public-site .footer-inner{
+  border:0 !important;
+  outline:0 !important;
+  box-shadow:none !important;
+}
+.public-site .hero-orb{
+  opacity:.12 !important;
+  filter:blur(2px);
+}
