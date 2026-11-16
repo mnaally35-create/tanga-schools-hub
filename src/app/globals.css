@@ -68,3 +68,61 @@ body{
 @media(max-width:650px){
   body,.dashboard-page,.profile-page{background-attachment:scroll !important}
 }
+
+/* Contrast and readability improvements over the campus photograph */
+.search-section,
+.section,
+.district-section,
+.news-section{
+  position:relative;
+  isolation:isolate;
+}
+.search-section::before,
+.section::before,
+.district-section::before,
+.news-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:rgba(248,250,247,.94);
+}
+.search-card,.school-card,.district-callout,.news-card,
+.empty-state,.join-inner{
+  background:rgba(255,255,255,.97) !important;
+  color:#18352d !important;
+  box-shadow:0 12px 32px rgba(12,35,26,.12);
+}
+.section-heading h2,.search-card h2,
+.section-heading p,.search-card p,
+.school-card h3,.school-card p{
+  color:#18352d !important;
+  text-shadow:none !important;
+}
+.school-card .school-type,.school-card-link,.text-link{
+  color:#17583f !important;
+}
+.hero-panel{
+  background:rgba(250,252,249,.97) !important;
+  color:#18352d !important;
+}
+/* Admin portal: show the campus photo clearly without the milky white veil. */
+.dashboard-page,.profile-page{
+  background:transparent !important;
+  background-image:none !important;
+}
+.dashboard-section,.form-panel,.profile-card,
+.admin-metrics article,.admin-school,.empty-state{
+  background:rgba(255,255,255,.96) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  box-shadow:0 12px 34px rgba(12,35,26,.13);
+}
+.dashboard-top h1,.dashboard-top p,
+.dashboard-page h2,.profile-page h1,.profile-page h2{
+  color:#14372c;
+  text-shadow:0 1px 2px rgba(255,255,255,.75);
+}
+@media(max-width:650px){
+  .search-section::before,.section::before,.district-section::before,.news-section::before{background:rgba(248,250,247,.96)}
+}
