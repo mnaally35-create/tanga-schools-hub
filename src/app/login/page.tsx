@@ -15,9 +15,13 @@ export default function LoginPage() {
   async function submit(e: FormEvent) {
     e.preventDefault(); setBusy(true); setError("");
     try {
-      const { error } = await createClient().auth.signInWithPassword({ email, password });
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      router.push("/dashboard"); router.refresh();
+      const { data: platformRoles, error: roleError } = await supabase.from("platform_memberships").select("role").eq("user_id", data.user.id);
+      if (roleError) throw roleError;
+      const isPlatformAdmin = platformRoles?.some((item) => ["super_admin","regional_admin"].includes(item.role));
+      router.replace(isPlatformAdmin ? "/admin" : "/dashboard"); router.refresh();
     } catch (err) { setError(messageFromError(err)); }
     finally { setBusy(false); }
   }
