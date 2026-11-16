@@ -6,7 +6,7 @@ import { PortalHeader } from "@/components/portal-header";
 import { createClient } from "@/lib/supabase/client";
 import { messageFromError, slugify } from "@/lib/utils";
 
-type Membership = { id: string; role: string; schools: { id: string; name: string; slug: string; status: string; school_type: string } | null };
+type Membership = { id: string; role: string; schools: { id: string; name: string; slug: string; status: string; school_type: string; registration_number: string | null; district_id: string | null; ward: string | null; address: string | null; phone: string | null; email: string | null; rejection_reason: string | null } | null };
 type District = { id: string; name: string };
 type Ward = { id: string; name: string };
 export default function DashboardPage() {
@@ -16,11 +16,11 @@ export default function DashboardPage() {
   useEffect(() => { let active = true; const supabase = createClient();
     async function load() { const { data: { user } } = await supabase.auth.getUser(); if (!user) { router.replace("/login"); return; } if (!active) return; setEmail(user.email ?? "");
       const [{ data, error }, { data: districtRows, error: districtError }, { data: platformRole, error: platformRoleError }] = await Promise.all([
-        supabase.from("school_memberships").select("id,role,schools(id,name,slug,status,school_type)").eq("user_id", user.id).eq("is_active", true),
+        supabase.from("school_memberships").select("id,role,schools(id,name,slug,status,school_type,registration_number,district_id,ward,address,phone,email,rejection_reason)").eq("user_id", user.id).eq("is_active", true),
         supabase.from("districts").select("id,name").eq("region","Tanga").eq("is_active",true).order("name"),
         supabase.from("platform_memberships").select("role").eq("user_id", user.id)
       ]);
-      if (!active) return; if (error) setError(error.message); else setMemberships((data ?? []) as unknown as Membership[]);
+      if (!active) return; if (error) setError(error.message); else { const rows=(data ?? []) as unknown as Membership[]; setMemberships(rows); const rejected=rows.find((m)=>m.schools?.status==="rejected")?.schools; if(rejected){setSchoolName(rejected.name);setSchoolType(rejected.school_type);setRegistrationNumber(rejected.registration_number??"");setDistrictId(rejected.district_id??"");setWard(rejected.ward??"");setAddress(rejected.address??"");setPhone(rejected.phone??"");setSchoolEmail(rejected.email??""); if(rejected.district_id){const {data:wardRows}=await supabase.from("wards").select("id,name").eq("district_id",rejected.district_id).order("name");if(active)setWards(wardRows??[]);} } }
       if (districtError) setError(districtError.message); else setDistricts(districtRows ?? []);
       if (platformRoleError) setError(platformRoleError.message); else { const platformAdmin = (platformRole ?? []).some((item) => ["super_admin","regional_admin"].includes(item.role)); setIsPlatformAdmin(platformAdmin); if (platformAdmin) { router.replace("/admin"); return; } }
       setLoading(false);
@@ -33,11 +33,17 @@ export default function DashboardPage() {
       if (adminRoles?.some((item) => ["super_admin","regional_admin"].includes(item.role))) throw new Error("Akaunti ya Admin Mkuu haiwezi kusajili shule au kupewa nafasi ya School Admin. Tumia akaunti tofauti ya shule.");
       const slug = slugify(schoolName); if (!slug) throw new Error("Enter a valid school name.");
       const selectedDistrict = districts.find((item) => item.id === districtId); if (!selectedDistrict) throw new Error("Please select a district.");
-      const { data: school, error } = await supabase.from("schools").insert({ name: schoolName.trim(), slug, school_type: schoolType, registration_number: registrationNumber.trim() || null, district_id: districtId, ward: ward.trim() || null, address: [selectedDistrict.name, address.trim()].filter(Boolean).join(", ") || null, phone: phone.trim() || null, email: schoolEmail.trim() || null, created_by: user.id, status: "pending" }).select("id").single();
-      if (error) throw error;
-      const { error: membershipError } = await supabase.from("school_memberships").insert({ school_id: school.id, user_id: user.id, role: "school_admin", is_active: true });
-      if (membershipError) throw new Error("School was submitted, but administrator access could not be linked. Please contact platform support: " + membershipError.message);
-      setSuccess("School profile submitted. Your account is now linked as its School Admin. The school will appear in the public directory after verification.");
+      const rejectedSchool = memberships.find((m)=>m.schools?.status==="rejected")?.schools;
+      if(rejectedSchool){
+        const {error}=await supabase.from("schools").update({name:schoolName.trim(),slug,school_type:schoolType,registration_number:registrationNumber.trim()||null,district_id:districtId,ward:ward.trim()||null,address:[selectedDistrict.name,address.trim()].filter(Boolean).join(", ")||null,phone:phone.trim()||null,email:schoolEmail.trim()||null,status:"pending",rejection_reason:null,verified_at:null,verified_by:null}).eq("id",rejectedSchool.id);
+        if(error) throw error;
+      } else {
+        const { data: school, error } = await supabase.from("schools").insert({ name: schoolName.trim(), slug, school_type: schoolType, registration_number: registrationNumber.trim() || null, district_id: districtId, ward: ward.trim() || null, address: [selectedDistrict.name, address.trim()].filter(Boolean).join(", ") || null, phone: phone.trim() || null, email: schoolEmail.trim() || null, created_by: user.id, status: "pending" }).select("id").single();
+        if (error) throw error;
+        const { error: membershipError } = await supabase.from("school_memberships").insert({ school_id: school.id, user_id: user.id, role: "school_admin", is_active: true });
+        if (membershipError) throw new Error("School was submitted, but administrator access could not be linked. Please contact platform support: " + membershipError.message);
+      }
+      setSuccess(rejectedSchool ? "Corrections submitted successfully. Your school is pending review again." : "School profile submitted. Your account is now linked as its School Admin. The school will appear in the public directory after verification.");
       setSchoolName(""); setRegistrationNumber(""); setDistrictId(""); setWard(""); setAddress(""); setPhone(""); setSchoolEmail("");
       const { data } = await supabase.from("school_memberships").select("id,role,schools(id,name,slug,status,school_type)").eq("user_id", user.id).eq("is_active", true); setMemberships((data ?? []) as unknown as Membership[]);
     } catch (err) { setError(messageFromError(err)); } finally { setBusy(false); }
