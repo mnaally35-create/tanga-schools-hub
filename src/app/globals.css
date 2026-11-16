@@ -11,3 +11,25 @@ body{background-color:#edf1eb;background-image:linear-gradient(rgba(247,248,245,
 .dashboard-section,.form-panel,.auth-card,.profile-card{background-color:rgba(255,255,255,.91);backdrop-filter:blur(7px)}
 .data-attribution{font-size:11px;color:#69766f;margin:-2px 0 4px}.data-attribution a{color:#174d3c;text-decoration:underline}
 @media(max-width:650px){body{background-attachment:scroll}}
+
+/* Refined, modern form controls for school onboarding */
+.form-grid select{
+  appearance:none;-webkit-appearance:none;
+  min-height:50px;padding:14px 46px 14px 16px;
+  border:1px solid #d7e1da;border-radius:13px;
+  color:#18352d;font-size:13px;font-weight:600;
+  background-color:rgba(255,255,255,.96);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%233d6655' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;
+  box-shadow:0 2px 8px rgba(18,61,49,.035);
+  transition:border-color .18s,box-shadow .18s,background-color .18s;
+  cursor:pointer
+}
+.form-grid select:hover:not(:disabled){border-color:#9eb6a6;background-color:#fff}
+.form-grid select:focus{border-color:#39785c;box-shadow:0 0 0 4px rgba(57,120,92,.13);outline:none}
+.form-grid select:disabled{opacity:.58;cursor:not-allowed;background-color:#f0f3f0}
+.form-grid select option{font-weight:500;color:#18352d;padding:10px}
+.admin-restriction{border-color:#d9e5dc;background:rgba(248,251,248,.94)}
+.admin-restriction .section-heading{margin:0}
+.admin-restriction .section-heading h2{margin-top:10px}
+@media(max-width:650px){.form-grid select{min-height:52px;border-radius:12px}}
