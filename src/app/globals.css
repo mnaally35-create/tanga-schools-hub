@@ -968,3 +968,31 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
 .dashboard-page .admin-tab span{background:#365064 !important;color:#f4f8fb !important}
 .dashboard-page .admin-tab.active{background:#087ba8 !important;color:#fff !important;border-color:#36b9e3 !important}
 .dashboard-page .admin-tab.active span{background:#07516f !important;color:#fff !important}
+
+
+/* Public news article only: dark readable typography on its light paper card */
+.news-article{
+  background:#f7f4ec !important;
+  color:#26362f !important;
+}
+.news-article .eyebrow{
+  color:#176b83 !important;
+}
+.news-article h1{
+  color:#20352d !important;
+  text-shadow:none !important;
+}
+.news-article .news-article-meta{
+  color:#53645b !important;
+  border-bottom-color:#cbd4cc !important;
+}
+.news-article .news-article-excerpt{
+  color:#354d42 !important;
+}
+.news-article .news-article-content,
+.news-article .news-article-content p{
+  color:#35463e !important;
+}
+.news-article .text-link{
+  color:#087ba8 !important;
+}
