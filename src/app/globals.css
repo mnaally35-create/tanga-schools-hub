@@ -334,3 +334,94 @@ textarea,.auth-card input{
   .admin-school,.empty-state,.dashboard-help{padding:18px !important;border-radius:22px !important}
   .dashboard-school{flex-wrap:wrap;padding:18px !important;border-radius:22px !important}
 }
+
+/* Dashboard school list: one card per school, no nested white wrapper */
+.dashboard-section > .dashboard-school-list{
+  display:grid !important;
+  gap:12px !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  overflow:visible !important;
+}
+.dashboard-section > .dashboard-school-list > .dashboard-school{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto auto;
+  align-items:center !important;
+  gap:18px !important;
+  width:100%;
+  min-width:0;
+  margin:0 !important;
+  padding:20px 22px !important;
+  background:#202f3e !important;
+  border:1px solid #456176 !important;
+  border-radius:22px !important;
+  box-shadow:0 8px 22px rgba(0,0,0,.16) !important;
+  color:#f1f6fa !important;
+}
+.dashboard-section > .dashboard-school-list > .dashboard-school > div{
+  min-width:0;
+}
+.dashboard-school h3{
+  color:#f4f8fb !important;
+  font-size:16px !important;
+  font-weight:750 !important;
+  line-height:1.35;
+  overflow-wrap:anywhere;
+}
+.dashboard-school p{
+  color:#b9cbd7 !important;
+}
+.dashboard-school .status{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  min-width:88px;
+  padding:8px 13px !important;
+  border-radius:999px !important;
+  font-size:10px !important;
+  font-weight:850 !important;
+  letter-spacing:.045em;
+  white-space:nowrap;
+}
+.dashboard-school .status-pending{
+  background:#59451e !important;
+  color:#ffe2a0 !important;
+  border:1px solid #8a6b30 !important;
+}
+.dashboard-school .status-rejected{
+  background:#542d37 !important;
+  color:#ffd4dc !important;
+  border:1px solid #9a5261 !important;
+}
+.dashboard-school .status-verified{
+  background:#17483e !important;
+  color:#c9f7e8 !important;
+  border:1px solid #367d6c !important;
+}
+.dashboard-school .status-suspended{
+  background:#542d37 !important;
+  color:#ffd4dc !important;
+  border:1px solid #9a5261 !important;
+}
+.dashboard-school .text-link{
+  color:#57d0f2 !important;
+  font-weight:750 !important;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  .dashboard-section > .dashboard-school-list > .dashboard-school{
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:12px;
+  }
+  .dashboard-school .text-link{grid-column:1/-1;justify-self:start}
+}
+@media(max-width:420px){
+  .dashboard-section > .dashboard-school-list > .dashboard-school{
+    grid-template-columns:1fr;
+  }
+  .dashboard-school .status{justify-self:start}
+}
