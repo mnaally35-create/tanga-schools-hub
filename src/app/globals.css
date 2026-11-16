@@ -788,3 +788,38 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
 .news-article-content{font-size:15px;line-height:1.95;color:#43544b;overflow-wrap:anywhere}
 .news-article-content p{margin:0 0 18px;white-space:pre-wrap}
 @media(max-width:650px){.news-article{padding:22px;border-radius:16px}.news-article-content{font-size:14px}}
+
+
+/* Platform admin console */
+.admin-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.admin-metrics article{padding:21px;border:1px solid #dfe8e2;border-radius:17px;background:rgba(255,255,255,.94);display:flex;flex-direction:column;gap:8px}
+.admin-metrics article span{font-size:12px;font-weight:800;color:#65756c}
+.admin-metrics article strong{font-size:32px;line-height:1.1;color:var(--ink)}
+.admin-metrics article small{font-size:11px;color:#7b8981;line-height:1.5}
+.admin-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:18px 0}
+.admin-tabs{display:flex;gap:7px;flex-wrap:wrap}
+.admin-tab{display:inline-flex;align-items:center;gap:8px;border:1px solid #dce5df;border-radius:999px;padding:9px 13px;background:#fff;color:#46574d;font-size:11px;font-weight:800;cursor:pointer}
+.admin-tab span{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:20px;background:#edf2ee;color:#46574d}
+.admin-tab.active{background:#173d35;color:#fff;border-color:#173d35}
+.admin-tab.active span{background:rgba(255,255,255,.18);color:#fff}
+.admin-search input{width:min(100%,340px);min-width:240px;border:1px solid #dce5df;border-radius:11px;padding:12px 14px;background:#fff;color:var(--ink);font:inherit;font-size:12px}
+.admin-school-main{min-width:0;flex:1}
+.admin-status{display:inline-flex;margin-left:8px;padding:5px 9px;border-radius:30px;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;background:#edf1ee;color:#526159}
+.admin-status.status-pending{background:#fff3d9;color:#91620b}
+.admin-status.status-verified{background:#e1f4e8;color:#187443}
+.admin-status.status-rejected{background:#fde9e7;color:#a53b32}
+.admin-status.status-suspended{background:#ece8f8;color:#634a9b}
+.admin-rejection-note{margin:9px 0 0!important;color:#a53b32!important;font-size:11px!important}
+.admin-school .admin-actions{max-width:240px}
+@media(max-width:900px){.admin-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){
+ .admin-metrics{gap:9px}
+ .admin-metrics article{padding:15px;border-radius:13px}
+ .admin-metrics article strong{font-size:26px}
+ .admin-toolbar{align-items:stretch}
+ .admin-tabs{width:100%}
+ .admin-tab{flex:1;justify-content:center}
+ .admin-search,.admin-search input{width:100%;min-width:0}
+ .admin-school{align-items:flex-start;flex-direction:column}
+ .admin-school .admin-actions{max-width:none;width:100%}
+}
