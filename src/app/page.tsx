@@ -34,7 +34,7 @@ export default function Home() {
     return matchesQuery && (type === "all" || school.school_type === type);
   }), [schools, query, type]);
 
-  return <><SiteHeader />
+  return <div className="public-site"><SiteHeader />
     <main>
       <section className="hero" id="home"><div className="hero-orb hero-orb-one"/><div className="hero-orb hero-orb-two"/>
         <div className="container hero-grid"><div className="hero-copy"><span className="eyebrow eyebrow-light">THE FUTURE OF EDUCATION IN TANGA</span><h1>One Region.<br/><em>All Schools.</em><br/>One Digital Hub.</h1><p>Discover secondary schools, explore educational opportunities and connect with the education community across Tanga Region.</p><div className="hero-actions"><a className="button button-gold" href="#schools">Explore Schools <span>→</span></a><Link className="button button-outline" href="/register">Register Your School</Link></div><div className="hero-note"><span className="live-dot"/> A growing digital home for Tanga education</div></div>
@@ -50,5 +50,5 @@ export default function Home() {
       <section className="join-banner"><div className="container join-inner"><div><span className="eyebrow eyebrow-light">BE PART OF THE NETWORK</span><h2>Bring your school into one connected future.</h2><p>Register your school and help build Tanga’s shared education directory.</p></div><Link className="button button-gold" href="/register">Get Started →</Link></div></section>
     </main>
     <footer className="footer" id="about"><div className="container footer-inner"><div><Link href="/" className="brand brand-footer"><span className="brand-mark">T</span><span><strong>TANGA SCHOOLS</strong><small>HUB</small></span></Link><p>Connecting schools, empowering learners and building a stronger digital education community.</p></div><div className="footer-side"><strong>One Region. All Schools. One Digital Future.</strong><span>Tanga Region, Tanzania</span><Link href="/login">School Login</Link></div></div><div className="footer-bottom">© 2026 TANGA SCHOOLS HUB. All rights reserved.</div></footer>
-  </>;
+  </div>;
 }
