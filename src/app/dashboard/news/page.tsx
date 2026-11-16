@@ -108,7 +108,7 @@ export default function SchoolNewsPage() {
     {loading?<div className="empty-state">Loading school news workspace…</div>:<>
       {schools.length>1&&<label className="news-school-select">Manage school<select value={selectedSchool} onChange={e=>chooseSchool(e.target.value)}>{schools.map(s=><option key={s.id} value={s.id}>{s.name}</option>)}</select></label>}
       {activeSchool&&<div className="news-verification-note"><strong>{activeSchool.name}</strong><span className={activeSchool.status==="verified"?"status status-verified":"status status-pending"}>{activeSchool.status}</span>{activeSchool.status!=="verified"&&<p>Your school profile must be approved before articles can be published. Drafts can be saved in the meantime.</p>}</div>}
-      {error&&<div className="alert alert-error">{error}</div>}{notice&&<div className="alert alert-success">{notice}</div>}
+      {(error||notice)&&<div className={error?"news-feedback alert alert-error":"news-feedback alert alert-success"} role={error?"alert":"status"} aria-live="polite"><span>{error||notice}</span><button type="button" className="news-feedback-close" onClick={()=>{setError("");setNotice("");}} aria-label="Dismiss message">×</button></div>}
       <section className="dashboard-section form-panel"><div className="section-heading"><div><h2>Create an article</h2><p>Write a clear headline and a useful update. Avoid sharing private student information.</p></div></div>
         <form className="form-grid" onSubmit={save}>
           <label className="field-span">Headline<input required minLength={3} maxLength={200} value={title} onChange={e=>setTitle(e.target.value)} placeholder="e.g. School announces new academic term dates"/></label>
