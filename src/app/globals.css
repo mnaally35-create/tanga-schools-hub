@@ -178,3 +178,88 @@ body{color:#f7f3e9}
 @media(max-width:650px){
   html,body{background-attachment:scroll !important}
 }
+
+/* HESLB-inspired teal and deep navy palette */
+:root{
+  --ink:#eef4f8;
+  --muted:#aab8c5;
+  --forest:#142b3b;
+  --forest2:#087ba8;
+  --gold:#24b5e5;
+  --line:#304657;
+}
+html,body{
+  min-height:100%;
+  background:#172431 !important;
+  background-image:linear-gradient(155deg,#08749a 0%,#07516f 18%,#12364e 34%,#172431 48%,#172431 100%) !important;
+  background-attachment:fixed !important;
+  color:#edf4f8 !important;
+}
+body{color:#edf4f8 !important}
+.dashboard-page,.profile-page,.auth-page,
+.search-section,.section,.district-section,.news-section,
+.hero,.hero-section,.page-section{
+  background:transparent !important;
+  background-image:none !important;
+}
+.search-section::before,.section::before,
+.district-section::before,.news-section::before{background:transparent !important}
+.site-header,.portal-header{
+  background:rgba(12,34,49,.96) !important;
+  border-bottom:1px solid rgba(124,190,218,.18);
+  color:#f3f8fb !important;
+}
+.site-header a,.portal-header a,.main-nav a{color:#eef5f9 !important}
+.brand small,.portal-role{color:#9fc5d7 !important}
+.portal-role{background:#1b3c50 !important;border-color:#34596d !important}
+.search-card,.school-card,.district-callout,.news-card,
+.join-inner,.hero-panel,.dashboard-section,.form-panel,
+.profile-card,.auth-card,.admin-metrics article,
+.admin-school,.empty-state{
+  background:#1b2937 !important;
+  color:#eaf1f6 !important;
+  border:1px solid #30485a !important;
+  box-shadow:0 14px 36px rgba(0,0,0,.22) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+.search-card h1,.search-card h2,.search-card h3,
+.school-card h1,.school-card h2,.school-card h3,
+.school-card p,.search-card p,
+.dashboard-section h1,.dashboard-section h2,.dashboard-section h3,
+.dashboard-section p,.form-panel h1,.form-panel h2,.form-panel p,
+.profile-card h1,.profile-card h2,.profile-card p,
+.admin-school h3,.admin-school p,.empty-state h3,.empty-state p,
+.section-heading h1,.section-heading h2,.section-heading h3,
+.dashboard-top h1,.dashboard-top p,.dashboard-page h1,.dashboard-page h2,
+.profile-page h1,.profile-page h2,.hero h1,.hero h2,.hero p,
+.search-section h1,.search-section h2,
+.section > .container > h2,.section > .container > p{
+  color:#eef4f8 !important;
+  text-shadow:none !important;
+}
+.school-card .school-type,.school-card-link,.text-link,
+.back-link{color:#53c5ed !important}
+.form-grid input,.form-grid select,.form-stack input,
+textarea,.auth-card input{
+  background:#202f3e !important;
+  color:#f0f6fa !important;
+  border-color:#385367 !important;
+}
+.form-grid input::placeholder,.form-stack input::placeholder{color:#aab8c5 !important}
+.form-grid select option{background:#1b2937;color:#eef4f8}
+.button-dark,.button-full,.admin-actions .button-dark{
+  background:linear-gradient(100deg,#20b5e5,#0879a8) !important;
+  color:#fff !important;border:0 !important;
+  box-shadow:0 8px 22px rgba(0,145,196,.2);
+}
+.button-outline-dark{
+  color:#eaf4f9 !important;
+  border-color:#52758a !important;
+  background:rgba(22,48,66,.72) !important;
+}
+.status{color:#d9edf6}
+.alert-error{background:#482b36;color:#ffdce5;border-color:#754452}
+.alert-success{background:#173f3c;color:#c8f4e7;border-color:#2c7165}
+.dashboard-top .eyebrow,.eyebrow{color:#8ecde5}
+@media(max-width:650px){html,body{background-attachment:scroll !important}}
