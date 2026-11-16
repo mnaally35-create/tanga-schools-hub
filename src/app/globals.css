@@ -874,3 +874,52 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
 @media(max-width:650px){
  .news-feedback{right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:calc(100vw - 24px)}
 }
+
+
+/* Portal contrast pass: explicitly pair every input/card background with its text */
+.dashboard-page .news-verification-note{
+  background:#1b2937 !important;
+  color:#f0f6fa !important;
+  border:1px solid #365064 !important;
+}
+.dashboard-page .news-verification-note strong,
+.dashboard-page .news-verification-note p{color:#eaf2f7 !important}
+.dashboard-page .news-verification-note .status{color:#173d35 !important}
+.dashboard-page .school-news-manage-item{
+  background:#1b2937 !important;
+  color:#eef4f8 !important;
+  border:1px solid #365064 !important;
+}
+.dashboard-page .school-news-manage-copy h3,
+.dashboard-page .school-news-manage-copy p,
+.dashboard-page .school-news-manage-copy small{color:#eef4f8 !important}
+.dashboard-page .school-news-manage-copy p{opacity:.82}
+.dashboard-page .school-news-manage-copy .school-type{color:#75d5f1 !important}
+.dashboard-page .news-school-select,
+.dashboard-page .form-grid label,
+.dashboard-page .news-publish-toggle{color:#f0f6fa !important}
+.dashboard-page .news-school-select select,
+.dashboard-page .admin-search input{
+  background:#202f3e !important;
+  color:#f4f8fb !important;
+  border:1px solid #456176 !important;
+}
+.dashboard-page .news-school-select select option{background:#1b2937;color:#f4f8fb}
+.dashboard-page .admin-search input::placeholder{color:#b7c7d2 !important;opacity:1}
+.dashboard-page .admin-tab{
+  background:#202f3e !important;
+  color:#eaf4f9 !important;
+  border-color:#456176 !important;
+}
+.dashboard-page .admin-tab span{
+  background:#365064 !important;
+  color:#f4f8fb !important;
+}
+.dashboard-page .admin-tab.active{
+  background:#087ba8 !important;
+  color:#fff !important;
+  border-color:#36b9e3 !important;
+}
+.dashboard-page .admin-tab.active span{background:#07516f !important;color:#fff !important}
+.dashboard-page .reject-reason-box label{color:#eef4f8 !important}
+.dashboard-page .reject-reason-box textarea{color:#f4f8fb !important;background:#202f3e !important}
