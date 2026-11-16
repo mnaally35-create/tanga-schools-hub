@@ -31,7 +31,7 @@ export default function DashboardPage() {
       const selectedDistrict = districts.find((item) => item.id === districtId); if (!selectedDistrict) throw new Error("Please select a district.");
       const { data: school, error } = await supabase.from("schools").insert({ name: schoolName.trim(), slug, school_type: schoolType, registration_number: registrationNumber.trim() || null, district_id: districtId, ward: ward.trim() || null, address: [selectedDistrict.name, address.trim()].filter(Boolean).join(", ") || null, phone: phone.trim() || null, email: schoolEmail.trim() || null, created_by: user.id, status: "pending" }).select("id").single();
       if (error) throw error;
-      const { error: membershipError } = await supabase.from("school_memberships").insert({ school_id: school.id, user_id: user.id, role: "school_admin", is_active: true });
+      const { error: membershipError } = await supabase.from("school_memberships").upsert({ school_id: school.id, user_id: user.id, role: "school_admin", is_active: true }, { onConflict: "school_id,user_id", ignoreDuplicates: false });
       if (membershipError) throw new Error("School was submitted, but administrator access could not be linked. Please contact platform support: " + membershipError.message);
       setSuccess("School profile submitted. Your account is now linked as its School Admin. The school will appear in the public directory after verification.");
       setSchoolName(""); setRegistrationNumber(""); setDistrictId(""); setWard(""); setAddress(""); setPhone(""); setSchoolEmail("");
