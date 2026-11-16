@@ -30,7 +30,8 @@ export default function DashboardPage() {
   async function submitSchool(e: FormEvent) { e.preventDefault(); setBusy(true); setError(""); setSuccess("");
     try { const supabase = createClient(); const { data: { user } } = await supabase.auth.getUser(); if (!user) throw new Error("Please sign in again.");
       const { data: adminRole } = await supabase.from("platform_memberships").select("role").eq("user_id", user.id).eq("role", "super_admin").maybeSingle();
-      if (adminRole) throw new Error("Akaunti ya Admin Mkuu haiwezi kusajili shule au kupewa nafasi ya School Admin. Tumia akaunti tofauti ya shule.");\n      const slug = slugify(schoolName); if (!slug) throw new Error("Enter a valid school name.");
+      if (adminRole) throw new Error("Akaunti ya Admin Mkuu haiwezi kusajili shule au kupewa nafasi ya School Admin. Tumia akaunti tofauti ya shule.");
+      const slug = slugify(schoolName); if (!slug) throw new Error("Enter a valid school name.");
       const selectedDistrict = districts.find((item) => item.id === districtId); if (!selectedDistrict) throw new Error("Please select a district.");
       const { data: school, error } = await supabase.from("schools").insert({ name: schoolName.trim(), slug, school_type: schoolType, registration_number: registrationNumber.trim() || null, district_id: districtId, ward: ward.trim() || null, address: [selectedDistrict.name, address.trim()].filter(Boolean).join(", ") || null, phone: phone.trim() || null, email: schoolEmail.trim() || null, created_by: user.id, status: "pending" }).select("id").single();
       if (error) throw error;
