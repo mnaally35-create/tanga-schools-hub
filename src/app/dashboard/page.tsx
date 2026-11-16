@@ -7,7 +7,8 @@ import { createClient } from "@/lib/supabase/client";
 import { messageFromError, slugify } from "@/lib/utils";
 
 type Membership = { id: string; role: string; schools: { id: string; name: string; slug: string; status: string; school_type: string } | null };
-type District = { id: string; name: string };\ntype Ward = { id: string; name: string };
+type District = { id: string; name: string };
+type Ward = { id: string; name: string };
 export default function DashboardPage() {
   const router = useRouter();
   const [email,setEmail] = useState(""); const [memberships,setMemberships] = useState<Membership[]>([]); const [districts,setDistricts] = useState<District[]>([]); const [wards,setWards] = useState<Ward[]>([]); const [loading,setLoading] = useState(true); const [busy,setBusy] = useState(false); const [error,setError] = useState(""); const [success,setSuccess] = useState("");
