@@ -1135,3 +1135,8 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
 .academic-list-item .button{padding:9px 14px;font-size:11px}
 @media(max-width:760px){.academic-setup-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.academic-list-item{align-items:flex-start}.academic-list-item .button{flex-shrink:0}}
+
+.admin-credential-box{white-space:pre-wrap;overflow-wrap:anywhere;padding:16px 18px;border:1px solid #d9c18f;border-radius:12px;background:#fff8e8;color:#4b3b1d;font:600 13px/1.7 ui-monospace,monospace;margin:16px 0}
+.academic-actions{display:flex;gap:8px;flex-wrap:wrap}
+.academic-actions .button{padding:9px 13px;font-size:11px}
+@media(max-width:650px){.academic-actions{width:100%}.academic-actions .button{flex:1}}
