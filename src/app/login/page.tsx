@@ -18,6 +18,13 @@ export default function LoginPage() {
       const supabase = createClient();
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
+      const { data: profile } = await supabase.from("profiles").select("must_change_password,temp_password_expires_at").eq("id", data.user.id).maybeSingle();
+      if (profile?.must_change_password) {
+        if (profile.temp_password_expires_at && new Date(profile.temp_password_expires_at).getTime() < Date.now()) {
+          await supabase.auth.signOut(); throw new Error("Password ya muda ime-expire. Tafadhali tuma ombi jipya la reset.");
+        }
+        router.replace("/change-password"); router.refresh(); return;
+      }
       const { data: platformRoles, error: roleError } = await supabase.from("platform_memberships").select("role").eq("user_id", data.user.id);
       if (roleError) throw roleError;
       const isPlatformAdmin = platformRoles?.some((item) => ["super_admin","regional_admin"].includes(item.role));
@@ -25,5 +32,5 @@ export default function LoginPage() {
     } catch (err) { setError(messageFromError(err)); }
     finally { setBusy(false); }
   }
-  return <><SiteHeader/><main className="auth-page"><div className="auth-card"><span className="eyebrow">SCHOOL PORTAL</span><h1>Welcome back</h1><p>Sign in to manage your school’s presence on TANGA SCHOOLS HUB.</p><form onSubmit={submit} className="form-stack"><label>Email address<input type="email" autoComplete="email" required value={email} onChange={e=>setEmail(e.target.value)} placeholder="name@school.ac.tz"/></label><label>Password<input type="password" autoComplete="current-password" required value={password} onChange={e=>setPassword(e.target.value)} placeholder="Your password"/></label>{error && <div className="alert alert-error">{error}</div>}<button className="button button-dark button-full" disabled={busy}>{busy ? "Signing in…" : "Sign in"}</button></form><div className="auth-bottom">New to the hub? <Link href="/register">Register your school</Link></div><Link className="back-link" href="/">← Back to homepage</Link></div></main></>;
+  return <><SiteHeader/><main className="auth-page"><div className="auth-card"><span className="eyebrow">SCHOOL PORTAL</span><h1>Welcome back</h1><p>Sign in to manage your school’s presence on TANGA SCHOOLS HUB.</p><form onSubmit={submit} className="form-stack"><label>Email address<input type="email" autoComplete="email" required value={email} onChange={e=>setEmail(e.target.value)} placeholder="name@school.ac.tz"/></label><label>Password<input type="password" autoComplete="current-password" required value={password} onChange={e=>setPassword(e.target.value)} placeholder="Your password"/></label>{error && <div className="alert alert-error">{error}</div>}<button className="button button-dark button-full" disabled={busy}>{busy ? "Signing in…" : "Sign in"}</button></form><div className="auth-bottom"><Link href="/forgot-password">Forgot password?</Link></div><div className="auth-bottom">New to the hub? <Link href="/register">Register your school</Link></div><Link className="back-link" href="/">← Back to homepage</Link></div></main></>;
 }
