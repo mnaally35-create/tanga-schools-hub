@@ -32,8 +32,8 @@ export default function AdminPage() {
     const supabase = createClient();
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) { router.replace("/login"); return; }
-    const { data: roles, error: roleError } = await supabase.from("platform_memberships").select("role").eq("user_id", user.id);
-    if (roleError || !roles?.some((r) => ["super_admin", "regional_admin"].includes(r.role))) {
+    const { data: roles, error: roleError } = await supabase.from("platform_memberships").select("role,is_active").eq("user_id", user.id);
+    if (roleError || !roles?.some((r) => ["super_admin", "regional_admin"].includes(r.role) && r.is_active)) {
       router.replace("/dashboard"); return;
     }
     setAllowed(true);
