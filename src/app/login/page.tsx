@@ -28,7 +28,8 @@ export default function LoginPage() {
       const { data: platformRoles, error: roleError } = await supabase.from("platform_memberships").select("role").eq("user_id", data.user.id);
       if (roleError) throw roleError;
       const isPlatformAdmin = platformRoles?.some((item) => ["super_admin","regional_admin"].includes(item.role));
-      router.replace(isPlatformAdmin ? "/admin" : "/dashboard"); router.refresh();
+      const isModerator = platformRoles?.some((item) => item.role === "moderator");
+      router.replace(isPlatformAdmin ? "/admin" : isModerator ? "/moderator" : "/dashboard"); router.refresh();
     } catch (err) { setError(messageFromError(err)); }
     finally { setBusy(false); }
   }
