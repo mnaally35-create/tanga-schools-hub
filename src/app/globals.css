@@ -1140,3 +1140,20 @@ body:has(.hero) .footer-bottom{border-top:1px solid #30485a !important}
 .academic-actions{display:flex;gap:8px;flex-wrap:wrap}
 .academic-actions .button{padding:9px 13px;font-size:11px}
 @media(max-width:650px){.academic-actions{width:100%}.academic-actions .button{flex:1}}
+
+
+/* Persistent vertical portal sidebar: navigation never depends on opening Profile. */
+.portal-layout{position:relative;z-index:60}
+.portal-sidebar{position:fixed;inset:0 auto 0 0;width:244px;padding:22px 16px 18px;background:rgba(255,255,255,.97);border-right:1px solid #dfe7df;box-shadow:8px 0 28px rgba(20,45,35,.055);display:flex;flex-direction:column;overflow-y:auto}
+.portal-brand{display:flex;align-items:center;gap:10px;padding:4px 7px 24px;border-bottom:1px solid #e6ece6}
+.portal-brand strong{display:block;font-size:13px;letter-spacing:-.3px}
+.portal-brand small{display:block;font-size:9px;letter-spacing:2px;color:#87948b;margin-top:3px}
+.portal-sidebar-label{font-size:9px;font-weight:900;letter-spacing:1.6px;color:#9a805c;padding:22px 10px 10px}
+.portal-side-nav{display:flex;flex-direction:column;gap:5px}
+.portal-side-nav a,.portal-sidebar-bottom a,.portal-sidebar-bottom button{display:flex;align-items:center;width:100%;min-height:43px;padding:10px 12px;border:0;border-radius:10px;background:transparent;color:#40534a;text-align:left;font-size:12px;font-weight:750;cursor:pointer}
+.portal-side-nav a:hover,.portal-sidebar-bottom a:hover,.portal-sidebar-bottom button:hover{background:#f0f5f0;color:#174d3c}
+.portal-side-nav a.active,.portal-sidebar-bottom a.active{background:#eaf2eb;color:#174d3c;box-shadow:inset 3px 0 #d5a65e}
+.portal-sidebar-bottom{margin-top:auto;padding-top:16px;border-top:1px solid #e6ece6;display:grid;gap:5px}
+.portal-mobile-top{display:none}
+@media(min-width:761px){body:has(.portal-sidebar) .site-header{display:none}body:has(.portal-sidebar) .dashboard-page,body:has(.portal-sidebar) .profile-page{margin-left:244px;min-height:100vh}body:has(.portal-sidebar) .dashboard-container{width:min(1000px,calc(100% - 48px))}}
+@media(max-width:760px){.portal-sidebar{width:188px;padding:15px 10px}.portal-brand{gap:7px;padding:2px 4px 16px}.portal-brand .brand-mark{width:34px;height:34px;font-size:18px}.portal-brand strong{font-size:10px}.portal-brand small{font-size:8px}.portal-side-nav a,.portal-sidebar-bottom a,.portal-sidebar-bottom button{font-size:10px;min-height:40px;padding:9px 8px}.portal-sidebar-label{font-size:8px;padding:16px 8px 8px}body:has(.portal-sidebar) .dashboard-page,body:has(.portal-sidebar) .profile-page{margin-left:188px;padding-top:24px}body:has(.portal-sidebar) .dashboard-container{width:calc(100% - 24px)}body:has(.portal-sidebar) .dashboard-top{gap:12px}body:has(.portal-sidebar) .dashboard-top h1{font-size:23px}body:has(.portal-sidebar) .dashboard-top p{font-size:11px}}
