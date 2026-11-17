@@ -13,6 +13,7 @@ const schoolLinks = [
   ["/dashboard/exams", "Exams"],
   ["/dashboard/students", "Students"],
   ["/dashboard/results", "Results"],
+  ["/dashboard/security", "Password reset requests"],
 ];
 const adminLinks = [
   ["/admin", "School requests"],
