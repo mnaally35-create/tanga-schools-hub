@@ -87,7 +87,7 @@ export default function AdminPage() {
 
   return <><PortalHeader admin /><main className="dashboard-page"><div className="container dashboard-container">
     <div className="dashboard-top"><div><span className="eyebrow">PLATFORM MANAGEMENT</span><h1>Admin console</h1><p>Monitor school registrations and manage the platform directory.</p></div>
-      <div className="dashboard-account-actions"><a className="button button-outline-dark" href="/profile">My profile</a></div>
+      <div className="dashboard-account-actions"><a className="button button-outline-dark" href="/admin/security">Security & Moderators</a><a className="button button-outline-dark" href="/profile">My profile</a></div>
     </div>
     {loading ? <div className="empty-state">Checking administrator access…</div> : !allowed
       ? <div className="empty-state"><h3>Access restricted</h3><p>{error || "You do not have permission to view this page."}</p></div>
