@@ -25,10 +25,10 @@ export default function LoginPage() {
         }
         router.replace("/change-password"); router.refresh(); return;
       }
-      const { data: platformRoles, error: roleError } = await supabase.from("platform_memberships").select("role").eq("user_id", data.user.id);
+      const { data: platformRoles, error: roleError } = await supabase.from("platform_memberships").select("role,is_active").eq("user_id", data.user.id);
       if (roleError) throw roleError;
-      const isPlatformAdmin = platformRoles?.some((item) => ["super_admin","regional_admin"].includes(item.role));
-      const isModerator = platformRoles?.some((item) => item.role === "moderator");
+      const isPlatformAdmin = platformRoles?.some((item) => ["super_admin","regional_admin"].includes(item.role) && item.is_active);
+      const isModerator = platformRoles?.some((item) => item.role === "moderator" && item.is_active);
       router.replace(isPlatformAdmin ? "/admin" : isModerator ? "/moderator" : "/dashboard"); router.refresh();
     } catch (err) { setError(messageFromError(err)); }
     finally { setBusy(false); }
